@@ -10,7 +10,12 @@ h1{
     align-items: center;
 }
 .flexItem{
-    
+    display: flex;
+    justify-content: center;
+}
+#pic{
+    width: 700px;
+    height: 820px;
 }
 #imgSpace{
     width: 1080px;
@@ -26,7 +31,4 @@ h1{
 }
 #btn2{
     margin-right: 8px;
-}
-#loadedImage{
-    
 }
