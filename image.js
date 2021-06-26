@@ -1,13 +1,8 @@
 // function to fetch image details
-export async function getImagedetails() {
+export async function getImagedetails(loadId) {
     let res;
-    let randomId = Math.floor(Math.random() * 100);
-    if (randomId == 0) {
-        randomId = 1
-    }
-    const currentId = randomId;
     try {
-        res = await fetch(`https://jsonplaceholder.typicode.com/photos/${currentId}`);
+        res = await fetch(`https://jsonplaceholder.typicode.com/photos/${loadId}`);
         const imageDetails = await res.json();
         console.log(imageDetails);
         return imageDetails;
@@ -17,6 +12,15 @@ export async function getImagedetails() {
         console.error(error);
     }
 }
+//function to load default page
+export async function preloadPage() {
+    let res;
+    res = await fetch(`https://jsonplaceholder.typicode.com/photos/1`);
+    const imageDetails = await res.json();
+    return imageDetails;
+}
+
+//function to create image
 export function createImage(imageUrl) {
     const imageHTMLElement = document.getElementById('pic');
     const imgSpace = document.getElementById('imgSpace');
