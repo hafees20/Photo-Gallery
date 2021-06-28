@@ -22,8 +22,6 @@ export async function preloadPage() {
 
 //function to create image
 export function createImage(imageUrl) {
-    const imageHTMLElement = document.getElementById('pic');
-    const imgSpace = document.getElementById('imgSpace');
+    const imageHTMLElement = document.getElementById('loadedPic');
     imageHTMLElement.src = imageUrl;
-    imgSpace.append(imageHTMLElement);
 }

@@ -1,9 +1,9 @@
 import { getImagedetails, preloadPage, createImage } from "./image.js";
 
-const btn1 = document.querySelector('#btn1');
-const btn2 = document.querySelector('#btn2');
+const btn1 = document.querySelector('#previousBtn');
+const btn2 = document.querySelector('#nextBtn');
 
-//default page loader
+//default page loader function
 const defaultPage = async () => {
     const preloadImage = await preloadPage();
     createImage(preloadImage.url);
@@ -32,7 +32,7 @@ const nextImage = async () => {
     loadnextId();
     const imageDetails = await getImagedetails(currentId);
     createImage(imageDetails.url);
-
+    indexNo(currentId);
 }
 
 //previous button handler
@@ -40,6 +40,13 @@ const previousImage = async () => {
     loadpreviousId();
     const imageDetails = await getImagedetails(currentId);
     createImage(imageDetails.url);
+    indexNo(currentId);
+}
+
+// function to show index no
+function indexNo(currentId) {
+    const indexText = document.getElementById('indexNo');
+    indexText.innerHTML = currentId;
 }
 
 defaultPage();
