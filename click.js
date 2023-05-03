@@ -1,19 +1,24 @@
-import { getImagedetails, preloadPage, createImage } from "./image.js";
+import { getImagedetails, createImage, loadingTime, afterLoad, buttonDisabler, buttonEnabler } from "./image.js";
 
 const btn1 = document.querySelector('#previousBtn');
 const btn2 = document.querySelector('#nextBtn');
 
 //default page loader function
+let currentId = 1;
+
 const defaultPage = async () => {
-    const preloadImage = await preloadPage();
+    loadingTime();
+    buttonDisabler("previous");
+    const preloadImage = await getImagedetails();
+    afterLoad();
     createImage(preloadImage.url);
 }
 
-let currentId = 1;
 
 //function to return next image id
 function loadnextId() {
     currentId++;
+    buttonEnabler("previous");
     return currentId;
 }
 
@@ -30,7 +35,16 @@ function loadpreviousId() {
 //next button handler
 const nextImage = async () => {
     loadnextId();
+    // Create a function to:
+    // Add spinner in loadedPic
+    loadingTime();
+    // Disable Both Buttons
+    buttonDisabler("next");
     const imageDetails = await getImagedetails(currentId);
+    // Remove spinner
+    afterLoad();
+    // Enable both buttons
+    buttonEnabler("next");
     createImage(imageDetails.url);
     indexNo(currentId);
 }
@@ -38,8 +52,12 @@ const nextImage = async () => {
 //previous button handler
 const previousImage = async () => {
     loadpreviousId();
+    loadingTime();
+    buttonDisabler("previous");
     const imageDetails = await getImagedetails(currentId);
     createImage(imageDetails.url);
+    afterLoad();
+    buttonEnabler("previous");
     indexNo(currentId);
 }
 
@@ -49,8 +67,9 @@ function indexNo(currentId) {
     indexText.innerHTML = currentId;
 }
 
-defaultPage();
+window.addEventListener("load", defaultPage);
 
 btn2.addEventListener('click', nextImage);
 
 btn1.addEventListener('click', previousImage);
+

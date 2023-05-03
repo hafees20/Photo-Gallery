@@ -3,6 +3,12 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
+#container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
+}
 
 header{
     width: 126px;
@@ -20,40 +26,33 @@ header span{
 }
 main{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
 }
 #loadedPic{
     width: 1130px;
     height: 532px;
-    margin-left: 155px;
     margin-top: 34px;
     border-radius: 10px;
 }
-/* #loadingPic{
-    width: 1130px;
-    height: 532px;
-    margin-left: 80px;
-    margin-top: 34px;
-    background-color: rgb(146, 49, 49);
-} */
+
 
 footer{
-    margin-top: 39px;
     background-color:#4B9760;
     height: 171px;
-    width: 1440px;
+    width: 100%;
     color: #FFFFFF;
+}
+#footerContent{
+    margin-top: 70px;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
 }
 #previousBtn {
-    background: url('skip_previous.svg');
     height: 23px;
     width: 23px;
-    display: inline-block;
-    margin-left: 620.5px;
-    margin-top: 54.5px;
-    margin-bottom: 93.5px;
-    margin-right: 11.5px;
+    margin-top: 8px;
 }
 #previousBtn:hover{
     cursor: pointer;
@@ -61,55 +60,42 @@ footer{
 #loadPrev{
     height: 32px;
     width: 29px;
-    display: inline-block;
-    margin-top: 50px;
-    margin-bottom: 89px;
-    margin-right: 29px;
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
     color: #FFFFFF;
-    text-align: left;
+    margin-top: 8px;
 }
 
 #indexNo{
-    margin-top: 41px;
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 38px;
-    line-height: 49px;
+    font-size: 30px;
     text-align: center;
     color: #FFFFFF;
-    margin-bottom: 81px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #loadNext{
     height: 32px;
     width: 29px;
-    display: inline-block;
-    margin-top: 50px;
-    margin-bottom: 89px;
-    margin-left: 29px;
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
-    line-height: 16px;
     color: #FFFFFF;
+    margin-top: 8px;
 }
 
 #nextBtn{
     background: url('skip_next.svg');
     height: 23px;
     width: 23px;
-    display: inline-block;
-    margin-right: 620.5px;
-    margin-top: 54.5px;
-    margin-bottom: 93.5px;
-    margin-left: 11.5px;
+    margin-top: 8px;
 }
 #nextBtn:hover{
     cursor: pointer;
